@@ -303,7 +303,7 @@ function profileProjectList() {
   return domains.map(d => {
     const entries = projects.filter(p => p.category === d.id);
     if (!entries.length) return '';
-    return `<details class="profile-project-group" data-domain="${escapeHTML(d.id)}"><summary><span class="profile-project-domain">${escapeHTML(d.title)}</span><span class="profile-project-count">${entries.length} ${entries.length === 1 ? 'intervento' : 'interventi'}</span></summary><ul class="profile-project-list">${entries.map(p => `<li><div><span>${escapeHTML(p.title)}</span>${p.credit ? '<span class="profile-project-credit">Collaborazione</span>' : ''}</div><span class="profile-project-place">${escapeHTML(placeLabel(p))}</span></li>`).join('')}</ul></details>`;
+    return `<details class="profile-project-group" data-domain="${escapeHTML(d.id)}"><summary><span class="profile-project-domain">${escapeHTML(d.title)}</span><span class="profile-project-count">${entries.length} ${entries.length === 1 ? 'intervento' : 'interventi'}</span></summary><ul class="profile-project-list">${entries.map(p => `<li><div><span>${escapeHTML(({ 'maison-de-marie':'Maison de Marie', 'moncalieri-unifamiliari':'Allason · Pietra, Terra, Legno', 'casa-f':'Casa F', 'loft-osasco':'Via Osasco', 'asili-nido':'Asilo · Papaveri & Papere', 'vandalino':'Vandalino', 'san-donato-loft':'Mulino Feyles', 'casa-mf':'Casa MF', 'patrimonio-condominiale':'Patrimonio condominiale' })[p.id] || p.title)}</span>${p.credit ? '<span class="profile-project-credit">Collaborazione</span>' : ''}</div><span class="profile-project-place">${escapeHTML(placeLabel(p))}</span></li>`).join('')}</ul></details>`;
   }).join('');
 }
 
